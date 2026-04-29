@@ -3,12 +3,11 @@ FreshTrack — Perishable Inventory Management System
 CC 103 — Data Structures and Algorithms
 Batangas State University | AY 2025–2026
 
-👥 Team Members
+Team Members
 
-
-25-09524  BUENDIA, BEVERLY ROSE T. 
-25-03580  BUTIONG, IYA ELAINE M. 
-25-04566  GABALDON, LANCE GENCEDRIC B.
+PROGRAMMER | 25-09524  BUENDIA, BEVERLY ROSE T. 
+PROGRAMMER | 25-03580  BUTIONG, IYA ELAINE M. 
+PROGRAMMER | 25-04566  GABALDON, LANCE GENCEDRIC B.
 
 1. Project Title
 
