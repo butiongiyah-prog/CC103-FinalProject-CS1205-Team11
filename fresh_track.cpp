@@ -1,6 +1,8 @@
 // ============================================================
 //  FRESH TRACK - Perishable Inventory Management System
-
+//  CC 103 - Data Structures and Algorithms
+//  Batangas State University | AY 2025-2026
+//
 //  Team Members:
 //    25-09524  BUENDIA, BEVERLY ROSE T.
 //    25-03580  BUTIONG, IYA ELAINE M.
@@ -26,7 +28,9 @@
 
 using namespace std;
 
+// ============================================================
 //  ANSI COLOR CODES
+// ============================================================
 #define RESET     "\033[0m"
 #define BOLD      "\033[1m"
 #define DIM       "\033[2m"
@@ -38,7 +42,9 @@ using namespace std;
 #define CYAN      "\033[96m"
 #define WHITE     "\033[97m"
 
+// ============================================================
 //  UTILITIES
+// ============================================================
 void clearScreen() {
 #ifdef _WIN32
     system("cls");
@@ -53,7 +59,9 @@ void pressEnter() {
     cin.get();
 }
 
+// ============================================================
 //  DATE
+// ============================================================
 struct Date {
     int day, month, year;
     Date() : day(0), month(0), year(0) {}
@@ -87,7 +95,9 @@ int daysUntilExpiry(const Date& expiry) {
     return (int)(expiry.toDays() - today().toDays());
 }
 
+// ============================================================
 //  PRODUCT
+// ============================================================
 class Product {
 private:
     string name;
@@ -127,7 +137,9 @@ public:
     }
 };
 
+// ============================================================
 //  ACTION (for undo stack)
+// ============================================================
 struct Action {
     string type;          // "ADD" or "SELL"
     string productName;
@@ -136,7 +148,9 @@ struct Action {
     Date   expiryDate;
 };
 
+// ============================================================
 //  STACK - LIFO - Undo mechanism
+// ============================================================
 class InventoryStack {
 private:
     static const int MAX = 100;
@@ -176,7 +190,9 @@ public:
     }
 };
 
+// ============================================================
 //  QUEUE - FIFO - Delivery intake
+// ============================================================
 class DeliveryQueue {
 private:
     static const int MAX = 50;
@@ -225,8 +241,10 @@ public:
     }
 };
 
+// ============================================================
 //  PRIORITY QUEUE - Min-Heap - Expiry alerts
 //  heapifyUp and heapifyDown are RECURSIVE
+// ============================================================
 class ExpiryPriorityQueue {
 private:
     static const int MAX = 200;
@@ -277,7 +295,9 @@ public:
     }
 };
 
+// ============================================================
 //  INVENTORY MANAGER
+// ============================================================
 class InventoryManager {
 private:
     static const int MAX_ITEMS = 200;
@@ -507,7 +527,9 @@ public:
     int  getUndoSize()   const { return undoStack.size(); }
 };
 
+// ============================================================
 //  INPUT HELPERS
+// ============================================================
 void clearInput() {
     cin.clear();
     cin.ignore(numeric_limits<streamsize>::max(), '\n');
@@ -542,7 +564,9 @@ Date getDate(const string& prompt) {
     }
 }
 
+// ============================================================
 //  UI HELPERS
+// ============================================================
 void sectionHeader(const string& title, const string& color = CYAN) {
     string bar(62, '=');
     int pad = max(0, (int)(60 - title.size()) / 2);
@@ -584,7 +608,9 @@ void printMenu(const InventoryManager& inv) {
     cout << GREEN << BOLD << "  Choice" << RESET << ": ";
 }
 
+// ============================================================
 //  MAIN
+// ============================================================
 int main() {
 #ifdef _WIN32
     // Enable ANSI colors on Windows terminal / VS Code
@@ -627,6 +653,7 @@ int main() {
 
         switch (choice) {
 
+        // ======================================================
         case 1: {
             sectionHeader("ADD NEW STOCK", GREEN);
             string name = getString("Product name");
@@ -643,6 +670,7 @@ int main() {
             break;
         }
 
+        // ======================================================
         case 2: {
             sectionHeader("SELL / PROCESS ITEM", YELLOW);
             string name = getString("Product name");
@@ -652,6 +680,7 @@ int main() {
             break;
         }
 
+        // ======================================================
         case 3: {
             sectionHeader("UNDO LAST ACTION", CYAN);
             cout << DIM << "  Data structure: Stack (LIFO)\n"
@@ -661,6 +690,7 @@ int main() {
             break;
         }
 
+        // ======================================================
         case 4: {
             sectionHeader("DISPLAY INVENTORY  (Iterative)", CYAN);
             cout << DIM << "  Algorithm: for-loop traversal — visits each item one by one.\n" << RESET;
@@ -669,6 +699,7 @@ int main() {
             break;
         }
 
+        // ======================================================
         case 5: {
             sectionHeader("DISPLAY INVENTORY  (Recursive)", MAGENTA);
             cout << DIM << "  Algorithm: recursive function — calls itself with index+1\n"
@@ -678,6 +709,7 @@ int main() {
             break;
         }
 
+        // ======================================================
         case 6: {
             sectionHeader("EXPIRY ALERTS", RED);
             cout << DIM << "  Data structure: Priority Queue (Min-Heap)\n"
@@ -688,6 +720,7 @@ int main() {
             break;
         }
 
+        // ======================================================
         case 7: {
             sectionHeader("SEARCH PRODUCT", BLUE);
             string query = getString("Product name to search");
@@ -696,6 +729,7 @@ int main() {
             break;
         }
 
+        // ======================================================
         case 8: {
             sectionHeader("SORT INVENTORY", CYAN);
             cout << "  " << GREEN << "[1]" << RESET << " Sort by expiry date (nearest first)\n";
@@ -706,6 +740,7 @@ int main() {
             break;
         }
 
+        // ======================================================
         case 9: {
             sectionHeader("DELIVERY QUEUE", BLUE);
             cout << DIM << "  Data structure: Queue (FIFO)\n"
@@ -736,13 +771,15 @@ int main() {
             break;
         }
 
+        // ======================================================
         case 10: {
             sectionHeader("UNDO HISTORY  (Stack)", CYAN);
             inv.viewUndoStack();
             pressEnter();
             break;
         }
-        
+
+        // ======================================================
         case 0:
             clearScreen();
             cout << GREEN << BOLD << "\n\n"
