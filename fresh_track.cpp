@@ -167,8 +167,7 @@ public:
         if (isEmpty()) { cout << YELLOW << "  No actions recorded.\n" << RESET; return; }
         cout << "  " << DIM << "Top of stack (most recent) is shown first:\n\n" << RESET;
         for (int i = top; i >= 0; i--) {
-            string col = (data[
-                i].type == "ADD") ? GREEN : YELLOW;
+            string col = (data[i].type == "ADD") ? GREEN : YELLOW;
             cout << "  " << DIM << "[" << (top - i + 1) << "] " << RESET
                  << col << BOLD << setw(6) << data[i].type << RESET
                  << "  " << left << setw(22) << data[i].productName
