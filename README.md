@@ -4,7 +4,6 @@ CC 103 — Data Structures and Algorithms
 Batangas State University | AY 2025–2026
 
 Team Members
-
 PROGRAMMER | 25-09524  BUENDIA, BEVERLY ROSE T. 
 PROGRAMMER | 25-03580  BUTIONG, IYA ELAINE M. 
 PROGRAMMER | 25-04566  GABALDON, LANCE GENCEDRIC B.
@@ -41,7 +40,6 @@ Why we used it:
 Every time the vendor adds stock or sells an item, we save the action details (product name, quantity, type, dates) and push it onto the Stack. When the vendor makes a mistake and selects Undo, we pop the most recent action and reverse it. We chose Stack because Undo always reverses the most recent action first, which is exactly what LIFO does. No other data structure fits this behavior as naturally as a Stack.
 
 
-
 Queue — Delivery Intake (FIFO)
 
 What it is:
@@ -51,7 +49,6 @@ In our program, we built the Queue using a circular array of 50 `Product` slots 
 
 Why we used it:
 When multiple deliveries arrive, they should be processed in the order they came in — not randomly. By enqueuing each delivery as it arrives and dequeuing them one by one, we make sure the earliest delivery is always recorded first. This matches the real-world flow of delivery intake for market vendors.
-
 
 
 Priority Queue — Expiry Alerts (Min-Heap)
@@ -140,7 +137,6 @@ Summary Table
  Readability         |  Easier for simple loops       |  Easier for tree/heap structures     
 
 In FreshTrack, we used iterative for the menu loop, for-loop display, bubble sort, queue processing, and linear search. We used recursive for `heapifyUp`, `heapifyDown`, and the alternate display function.
-
 
 
 6. Design Decisions
