@@ -19,13 +19,15 @@ A C++ console application that helps small market vendors in the Philippines man
 📋 Table of Contents
 
 - 🧩 The Problem
+- ✨ Features
 - 🏗️ Data Structures Used
 - ⚙️ Algorithms
 - ⚖️ Iterative vs Recursive
 - 🧠 Design Decisions
 - 🙏 Acknowledgements
 
-🧩 The Problem
+The Problem
+
 Small market vendors — especially fruit and vegetable sellers in Philippine public markets — manage their perishable goods manually. This leads to serious problems:
 
 - Vendors forget which products are about to expire and end up throwing them away or worse, selling expired goods
@@ -38,16 +40,17 @@ Our program, FreshTrack, solves all of these problems in a simple console interf
 
 ✨ Features
 Feature  Description
-➕ Add StockRecord incoming goods with batch and expiry dates
-💰 Sell ItemLog sales and update inventory quantities
-↩️ UndoReverse the last add or sell action instantly
-🚚 Process DeliveriesQueue incoming deliveries and process them in order
-🔴 Expiry AlertsView products sorted from most urgent to least urgent
-🔍 SearchCase-insensitive product name search
-📊 Sort InventorySort by expiry date or product name
-🎨 Color-coded UIRed = expired · Yellow = near expiry · Green = good
+-➕ Add StockRecord incoming goods with batch and expiry dates
+-💰 Sell ItemLog sales and update inventory quantities
+-↩️ UndoReverse the last add or sell action instantly
+-🚚 Process DeliveriesQueue incoming deliveries and process them in order
+-🔴 Expiry AlertsView products sorted from most urgent to least urgent
+-🔍 SearchCase-insensitive product name search
+-📊 Sort InventorySort by expiry date or product name
+-🎨 Color-coded UIRed = expired · Yellow = near expiry · Green = good
 
 🏗️ Data Structures Used
+
 Stack — Undo Mechanism (LIFO)
 
 What it is:
@@ -57,8 +60,6 @@ In our program, we built the Stack manually using a fixed array of 100 `Action` 
 
 Why we used it:
 Every time the vendor adds stock or sells an item, we save the action details (product name, quantity, type, dates) and push it onto the Stack. When the vendor makes a mistake and selects Undo, we pop the most recent action and reverse it. We chose Stack because Undo always reverses the most recent action first, which is exactly what LIFO does. No other data structure fits this behavior as naturally as a Stack.
-
-
 
 Queue — Delivery Intake (FIFO)
 
@@ -191,12 +192,9 @@ Both the query and product names are lowercased via transform() before compariso
 
 Trade-off: Small extra cost of transform() per search — completely negligible for typical vendor inventory size.
 
-
-
-
 Acknowledgements
 We would like to thank the following people and resources that helped us complete this project:
 
-👨‍🏫 Our CC 103 instructor for guiding us throughout the subject and teaching us the data structures and algorithms concepts applied in this project
-🏫 Batangas State University for providing the academic environment and the opportunity to work on meaningful projects that connect classroom learning to real-world problems
-🥬 The fruit and vegetable vendors in Philippine public markets whose daily challenges inspired the problem FreshTrack aims to solve — seeing how much they rely on memory and manual tracking made us want to build something that could genuinely help them
+-👨‍🏫 Our CC 103 instructor for guiding us throughout the subject and teaching us the data structures and algorithms concepts applied in this project
+-🏫 Batangas State University for providing the academic environment and the opportunity to work on meaningful projects that connect classroom learning to real-world problems
+-🥬 The fruit and vegetable vendors in Philippine public markets whose daily challenges inspired the problem FreshTrack aims to solve — seeing how much they rely on memory and manual tracking made us want to build something that could genuinely help them
