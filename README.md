@@ -18,15 +18,12 @@ A C++ console application that helps small market vendors in the Philippines man
 
 📋 Table of Contents
 
- The Problem
- Features
- Data Structures Used
- Algorithms
- Iterative vs Recursive
- Design Decisions
- How to Run
- Acknowledgements
-
+- 🧩 The Problem
+- 🏗️ Data Structures Used
+- ⚙️ Algorithms
+- ⚖️ Iterative vs Recursive
+- 🧠 Design Decisions
+- 🙏 Acknowledgements
 
 🧩 The Problem
 Small market vendors — especially fruit and vegetable sellers in Philippine public markets — manage their perishable goods manually. This leads to serious problems:
@@ -153,13 +150,13 @@ However, for heap operations like `heapifyUp` and `heapifyDown`, **recursive is 
 
 Summary Table
 
- Feature             | Iterative                      | Recursive 
-                     |                                |                                  
- Speed               |  Faster                        | Slower due to function call overhead 
- Memory              |  Less — no extra stack frames  | More — each call uses call stack     
- Stack overflow risk |  None                          | Possible for very large input        
- Best for            |  Display, search, sort, queue  | Heap operations, tree traversal      
- Readability         |  Easier for simple loops       |  Easier for tree/heap structures     
+| Feature             | Iterative                         | Recursive                              |
+|---------------------|-----------------------------------|----------------------------------------|
+| Speed               | Faster                            | Slower due to function call overhead   |
+| Memory              | Less — no extra stack frames      | More — each call uses call stack       |
+| Stack overflow risk | None                              | Possible for very large input          |
+| Best for            | Display, search, sort, queue      | Heap operations, tree traversal        |
+| Readability         | Easier for simple loops           | Easier for tree/heap structures        |
 
 In FreshTrack, we used iterative for the menu loop, for-loop display, bubble sort, queue processing, and linear search. We used recursive for `heapifyUp`, `heapifyDown`, and the alternate display function.
 
