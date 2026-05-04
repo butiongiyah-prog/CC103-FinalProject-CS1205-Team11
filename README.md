@@ -195,6 +195,9 @@ Trade-off: Small extra cost of transform() per search — completely negligible 
 Acknowledgements
 We would like to thank the following people and resources that helped us complete this project:
 
+
 -👨‍🏫 Our CC 103 instructor for guiding us throughout the subject and teaching us the data structures and algorithms concepts applied in this project
+
 -🏫 Batangas State University for providing the academic environment and the opportunity to work on meaningful projects that connect classroom learning to real-world problems
+
 -🥬 The fruit and vegetable vendors in Philippine public markets whose daily challenges inspired the problem FreshTrack aims to solve — seeing how much they rely on memory and manual tracking made us want to build something that could genuinely help them
