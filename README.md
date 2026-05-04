@@ -1,4 +1,4 @@
-FreshTrack — Perishable Inventory Management System
+**FreshTrack — Perishable Inventory Management System**
 
 CC 103 — Data Structures and Algorithms
 Batangas State University | AY 2025–2026
@@ -10,7 +10,7 @@ PROGRAMMER | 25-04566  GABALDON, LANCE GENCEDRIC B.
 
 1. Project Title
 
-FreshTrack — Perishable Inventory Management System**
+**FreshTrack — Perishable Inventory Management System**
 
 FreshTrack is a C++ console application that helps small market vendors in the Philippines manage their perishable goods inventory. It uses a menu-driven interface where vendors just type a number and press Enter to perform actions like adding stock, selling items, viewing expiry alerts, and undoing mistakes.
 
