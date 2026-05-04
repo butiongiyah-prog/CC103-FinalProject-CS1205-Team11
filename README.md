@@ -4,10 +4,12 @@ CC 103 — Data Structures and Algorithms
 Batangas State University | AY 2025–2026
 
 👥 Team
-Student ID      Name                         Role  
-25-09524        Buendia, Beverly Rose T.     💻 Programmer
-25-03580        Butiong, Iya Elaine M.       💻 Programmer
-25-04566        Gabaldon, Lance Gencedric B.
+
+| Student ID | Name                          | Role              |
+|:----------:|-------------------------------|-------------------|
+| 25-09524   | Buendia, Beverly Rose T.      | 💻 Programmer     |
+| 25-03580   | Butiong, Iya Elaine M.        | 💻 Programmer     |
+| 25-04566   | Gabaldon, Lance Gencedric B.  
 
 Project Title
 🥬 FreshTrack — Perishable Inventory Management System
