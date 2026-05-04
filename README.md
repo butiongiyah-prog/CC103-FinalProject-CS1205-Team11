@@ -1,22 +1,32 @@
-**FreshTrack — Perishable Inventory Management System**
+🥬 FreshTrack — Perishable Inventory Management System
 
 CC 103 — Data Structures and Algorithms
 Batangas State University | AY 2025–2026
 
-Team Members
-PROGRAMMER | 25-09524  BUENDIA, BEVERLY ROSE T. 
-PROGRAMMER | 25-03580  BUTIONG, IYA ELAINE M. 
-PROGRAMMER | 25-04566  GABALDON, LANCE GENCEDRIC B.
+👥 Team
 
-1. Project Title
+| Student ID | Name                          | Role              |
+|:----------:|-------------------------------|-------------------|
+| 25-09524   | Buendia, Beverly Rose T.      | 💻 Programmer     |
+| 25-03580   | Butiong, Iya Elaine M.        | 💻 Programmer     |
+| 25-04566   | Gabaldon, Lance Gencedric B.  
 
-**FreshTrack — Perishable Inventory Management System**
+Project Title
+🥬 FreshTrack — Perishable Inventory Management System
 
-FreshTrack is a C++ console application that helps small market vendors in the Philippines manage their perishable goods inventory. It uses a menu-driven interface where vendors just type a number and press Enter to perform actions like adding stock, selling items, viewing expiry alerts, and undoing mistakes.
+A C++ console application that helps small market vendors in the Philippines manage their perishable goods inventory — tracking stock, expiry alerts, deliveries, and undo operations through a simple menu-driven interface.
 
-2. Problem Description
+📋 Table of Contents
 
-What problem are we solving?
+- 🧩 The Problem
+- ✨ Features
+- 🏗️ Data Structures Used
+- ⚙️ Algorithms
+- ⚖️ Iterative vs Recursive
+- 🧠 Design Decisions
+- 🙏 Acknowledgements
+
+The Problem
 
 Small market vendors — especially fruit and vegetable sellers in Philippine public markets — manage their perishable goods manually. This leads to serious problems:
 
@@ -28,7 +38,19 @@ Small market vendors — especially fruit and vegetable sellers in Philippine pu
 Our program, FreshTrack, solves all of these problems in a simple console interface that does not require any technical knowledge to use. The vendor just picks a number from the menu and the system handles everything.
 
 
-3. Data Structures Used
+✨ Features
+Feature  Description
+-➕ Add StockRecord incoming goods with batch and expiry dates
+-💰 Sell ItemLog sales and update inventory quantities
+-↩️ UndoReverse the last add or sell action instantly
+-🚚 Process DeliveriesQueue incoming deliveries and process them in order
+-🔴 Expiry AlertsView products sorted from most urgent to least urgent
+-🔍 SearchCase-insensitive product name search
+-📊 Sort InventorySort by expiry date or product name
+-🎨 Color-coded UIRed = expired · Yellow = near expiry · Green = good
+
+🏗️ Data Structures Used
+
 Stack — Undo Mechanism (LIFO)
 
 What it is:
@@ -38,7 +60,6 @@ In our program, we built the Stack manually using a fixed array of 100 `Action` 
 
 Why we used it:
 Every time the vendor adds stock or sells an item, we save the action details (product name, quantity, type, dates) and push it onto the Stack. When the vendor makes a mistake and selects Undo, we pop the most recent action and reverse it. We chose Stack because Undo always reverses the most recent action first, which is exactly what LIFO does. No other data structure fits this behavior as naturally as a Stack.
-
 
 Queue — Delivery Intake (FIFO)
 
@@ -51,6 +72,7 @@ Why we used it:
 When multiple deliveries arrive, they should be processed in the order they came in — not randomly. By enqueuing each delivery as it arrives and dequeuing them one by one, we make sure the earliest delivery is always recorded first. This matches the real-world flow of delivery intake for market vendors.
 
 
+
 Priority Queue — Expiry Alerts (Min-Heap)
 
 What it is:
@@ -61,8 +83,8 @@ The two key operations — `heapifyUp` and `heapifyDown` — are both implemente
 Why we used it:
 Vendors need to know which products are about to expire so they can sell them first or remove them before they go bad. If we just used a regular list, we would have to sort it every time. The min-heap keeps the most urgent item at the top automatically. When the vendor views expiry alerts, the items are always shown from most urgent to least urgent without any extra sorting step.
 
-4. Algorithm Explanation
 
+⚙️ Algorithms
 Stack — Undo (LIFO)
 - When the user adds stock or sells an item, an `Action` struct is created with: `type` (ADD or SELL), `productName`, `quantity`, `batchDate`, `expiryDate`
 - The action is pushed onto the `InventoryStack` by doing `data[++top] = a`
@@ -99,8 +121,8 @@ Display All — Iterative
 
 Display All — Recursive
 - `displayAllRecursive()` calls `displayRecursiveHelper(0)` to start
-- **Base case:** `if (idx == itemCount) return` — all items printed, stop
-- **Recursive step:** print `items[idx]`, then call `displayRecursiveHelper(idx + 1)`
+- Base case: `if (idx == itemCount) return` — all items printed, stop
+- Recursive step: print `items[idx]`, then call `displayRecursiveHelper(idx + 1)`
 
 Search — Linear Search (Iterative)
 - Convert the user's query to lowercase
@@ -114,7 +136,8 @@ Sort — Bubble Sort (Iterative)
 - Sort by name: swap if current name comes after next name alphabetically
 - After sorting, display the updated inventory
 
-5. Iterative vs Recursive Comparison
+⚖️ Iterative vs Recursive
+Iterative vs Recursive Comparison
 
 Which is faster?
 
@@ -128,64 +151,53 @@ However, for heap operations like `heapifyUp` and `heapifyDown`, **recursive is 
 
 Summary Table
 
- Feature             | Iterative                      | Recursive 
-                     |                                |                                  
- Speed               |  Faster                        | Slower due to function call overhead 
- Memory              |  Less — no extra stack frames  | More — each call uses call stack     
- Stack overflow risk |  None                          | Possible for very large input        
- Best for            |  Display, search, sort, queue  | Heap operations, tree traversal      
- Readability         |  Easier for simple loops       |  Easier for tree/heap structures     
+| Feature             | Iterative                         | Recursive                              |
+|---------------------|-----------------------------------|----------------------------------------|
+| Speed               | Faster                            | Slower due to function call overhead   |
+| Memory              | Less — no extra stack frames      | More — each call uses call stack       |
+| Stack overflow risk | None                              | Possible for very large input          |
+| Best for            | Display, search, sort, queue      | Heap operations, tree traversal        |
+| Readability         | Easier for simple loops           | Easier for tree/heap structures        |
 
 In FreshTrack, we used iterative for the menu loop, for-loop display, bubble sort, queue processing, and linear search. We used recursive for `heapifyUp`, `heapifyDown`, and the alternate display function.
 
+🧠 Design Decisions
+1. 🔧 Built data structures from scratch (no STL)
+We could have used stack, queue, and priority_queue from the C++ Standard Library — but we built them manually using arrays.
+Why: Our subject requires us to demonstrate understanding at the memory level, not just call a built-in function.
 
-6. Design Decisions
+Trade-off: Fixed sizes (Stack: 100 · Queue: 50 · Heap: 200). A production app would use dynamic memory or STL containers.
 
-Decision 1 — We built the data structures from scratch instead of using STL
 
-We could have used `stack`, `queue`, and `priority_queue` from the C++ Standard Library but we chose to build them manually using arrays. We did this because our subject requires us to show that we understand how these data structures actually work at the memory level — not just how to call a built-in function.
+2. 🔄 Circular array for the Queue
+A linear array wastes space — after many enqueue and dequeue operations, the front becomes empty but cannot be reused. A circular array wraps front and rear using % MAX so every slot can be reused.
 
-Trade-off: Our implementation has fixed sizes (Stack: 100, Queue: 50, Heap: 200). This means there is a hard limit on how many items can be stored. In a real production app, we would use dynamic memory or STL containers instead.
+Trade-off: Index math is a little more complex, but memory efficiency is significantly better for repeated use.
 
-Decision 2 — Circular Array for the Queue
 
-We used a circular array for `DeliveryQueue` instead of a simple linear array. A linear array would waste space — after many enqueue and dequeue operations, the front of the array becomes empty but cannot be reused. With a circular array, `front` and `rear` wrap around using `% MAX` so every slot can be reused.
+3. 🌳 Recursive heapify
+heapifyUp and heapifyDown are implemented recursively because the recursive version directly mirrors the structure of the heap tree — each call handles one level and delegates the rest to itself.
 
-Trade-off: The index math is a little more complex to write and understand, but it is much more memory efficient for repeated use.
+Trade-off: For much larger datasets, an iterative version would be safer. For our max of 200 items, the recursion depth is only ~8 levels.
 
-Decision 3 — Recursive heapify
 
-We implemented `heapifyUp` and `heapifyDown` recursively instead of iteratively. We chose this because the recursive version directly mirrors the structure of the heap tree — each call handles one level and delegates the rest to itself. It is also cleaner and shorter to write.
+4. 🎨 ANSI color codes for the terminal UI
+Expired items appear in red, near-expiry items in yellow, and good items in green. system("chcp 65001") is called at startup to enable UTF-8 and ANSI on Windows.
 
-Trade-off: For our inventory size of up to 200 items, the maximum recursion depth is only about 8 levels (log₂(200) ≈ 8), so there is no risk of stack overflow. For much larger datasets, an iterative version would be safer.
+Trade-off: Older Windows CMD without ANSI support may not render colors. Works correctly on VS Code terminal and most modern terminals.
 
-Decision 4 — ANSI Color Codes for the Terminal UI
 
-We added color to the terminal output using ANSI escape codes. Expired items appear in red, near-expiry items in yellow, and good items in green. This makes it much easier for vendors to spot problems at a glance without having to read every single row.
+5. 🔡 Case-insensitive search
+Both the query and product names are lowercased via transform() before comparison — so kamatis, Kamatis, and KAMATIS all return the same result.
 
-Trade-off: ANSI colors work well on VS Code's terminal and most modern terminals. On some older Windows CMD windows without ANSI support, the colors may not render. We added `system("chcp 65001")` at startup to enable UTF-8 and ANSI on Windows.
+Trade-off: Small extra cost of transform() per search — completely negligible for typical vendor inventory size.
 
-Decision 5 — Case-Insensitive Search
-
-We made the search function case-insensitive by converting both the query and product names to lowercase before comparing. This way, typing "kamatis", "Kamatis", or "KAMATIS" all return the same result. This is important because not all vendors type consistently.
-
-Trade-off: There is a small extra cost of calling `transform()` on every item during each search, but for the small number of products a market vendor would have, this cost is completely negligible.
-
-7. Acknowledgement
-
+Acknowledgements
 We would like to thank the following people and resources that helped us complete this project:
 
-First and foremost, we thank our instructor for guiding us throughout this subject and for teaching us the concepts of data structures and algorithms that we applied in this project. Without the lessons learned in CC 103, we would not have been able to design and implement FreshTrack.
 
-We also thank Batangas State University for providing us with the academic environment and the opportunity to work on meaningful projects that connect classroom learning to real-world problems.
+-👨‍🏫 Our CC 103 instructor for guiding us throughout the subject and teaching us the data structures and algorithms concepts applied in this project
 
-We extend our gratitude to the **fruit and vegetable vendors** in Philippine public markets whose daily challenges inspired the problem that FreshTrack aims to solve. Seeing how much they rely on memory and manual tracking made us want to build something that could genuinely help them.
+-🏫 Batangas State University for providing the academic environment and the opportunity to work on meaningful projects that connect classroom learning to real-world problems
 
-Lastly, we thank our classmates and friends for their encouragement, feedback, and for helping us test the program during development.
-
-This project was a great learning experience for all of us. It taught us not just how to code data structures but also how to think about real problems and design solutions for them.
-
----
-
-> "Ingatan ang inyong paninda."
-> — FreshTrack v1.0 | CC 103 — Data Structures and Algorithms | BatStateU AY 2025–2026
+-🥬 The fruit and vegetable vendors in Philippine public markets whose daily challenges inspired the problem FreshTrack aims to solve — seeing how much they rely on memory and manual tracking made us want to build something that could genuinely help them
