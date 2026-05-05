@@ -1,9 +1,5 @@
 // ============================================================
 //  FRESH TRACK - Perishable Inventory Management System
-
-//  Team Members:
-//    25-09524  BUENDIA, BEVERLY ROSE T.
-//    25-03580  BUTIONG, IYA ELAINE M.
 //
 //  Data Structures:
 //    Stack         -> Undo last action (LIFO)
@@ -136,7 +132,7 @@ struct Action {
     Date   expiryDate;
 };
 
-//  STACK - LIFO - Undo mechanism
+//  STACK - LIFO - Undo feature
 class InventoryStack {
 private:
     static const int MAX = 100;
@@ -553,9 +549,9 @@ void sectionHeader(const string& title, const string& color = CYAN) {
 }
 
 void printMenu(const InventoryManager& inv) {
-    cout << GREEN << BOLD;
+    cout << BLUE << BOLD;
     cout << "  +------------------------------------------------------------+\n";
-    cout << "  |         F R E S H   T R A C K   v1.0                      |\n";
+    cout << "  |        🥬  F R E S H   T R A C K   v1.0                      |\n";
     cout << "  |    Perishable Inventory Management System                  |\n";
     cout << "  +------------------------------------------------------------+\n";
     cout << RESET;
@@ -581,7 +577,7 @@ void printMenu(const InventoryManager& inv) {
     cout << "  " << CYAN  << "[10]" << RESET << " View Undo History\n";
     cout << "  " << RED   << "[0]"  << RESET << "  Exit\n";
     cout << "\n  " << DIM << string(64, '-') << RESET << "\n";
-    cout << GREEN << BOLD << "  Choice" << RESET << ": ";
+    cout << BLUE << BOLD << "  Choice" << RESET << ": ";
 }
 
 //  MAIN
@@ -597,7 +593,7 @@ int main() {
 
     // ---- SPLASH SCREEN ----
     cout << "\n\n";
-    cout << GREEN << BOLD
+    cout << BLUE << BOLD
          << "   ___             _    _  _____              _    \n"
          << "  | __| _ ___ ___ | |_ | ||_   _| _ _  __ _ | |__ \n"
          << "  | _| | '_/ -_)_-< ' \\| |  | |  | '_|/ _` || / / \n"
@@ -605,13 +601,13 @@ int main() {
          << RESET;
     cout << CYAN << BOLD
          << "         Perishable Inventory Management System\n" << RESET;
-    cout << DIM
+    cout << DIM << BOLD
          << "         CC 103 - Data Structures and Algorithms\n"
          << "         Batangas State University  |  AY 2025-2026\n"
          << "\n"
          << "         Team Members:\n"
-         << "           25-09524  BUENDIA, BEVERLY ROSE T.\n"
-         << "           25-03580  BUTIONG, IYA ELAINE M.\n"
+         << "           25-09524  BUENDIA,  BEVERLY ROSE T.\n"
+         << "           25-03580  BUTIONG,  IYA ELAINE M.\n"
          << RESET << "\n";
     pressEnter();
 
@@ -654,25 +650,20 @@ int main() {
 
         case 3: {
             sectionHeader("UNDO LAST ACTION", CYAN);
-            cout << DIM << "  Data structure: Stack (LIFO)\n"
-                 << "  The most recent action is always reversed first.\n\n" << RESET;
             inv.undoLastAction();
             pressEnter();
             break;
         }
 
         case 4: {
-            sectionHeader("DISPLAY INVENTORY  (Iterative)", CYAN);
-            cout << DIM << "  Algorithm: for-loop traversal — visits each item one by one.\n" << RESET;
+            sectionHeader("DISPLAY INVENTORY-Iterative", CYAN);
             inv.displayAllIterative();
             pressEnter();
             break;
         }
 
         case 5: {
-            sectionHeader("DISPLAY INVENTORY  (Recursive)", MAGENTA);
-            cout << DIM << "  Algorithm: recursive function — calls itself with index+1\n"
-                 << "  until the base case (index == total items) is reached.\n" << RESET;
+            sectionHeader("DISPLAY INVENTORY-Recursive", MAGENTA);
             inv.displayAllRecursive();
             pressEnter();
             break;
@@ -680,9 +671,6 @@ int main() {
 
         case 6: {
             sectionHeader("EXPIRY ALERTS", RED);
-            cout << DIM << "  Data structure: Priority Queue (Min-Heap)\n"
-                 << "  heapifyUp/Down are implemented recursively.\n"
-                 << "  Items with the nearest expiry date appear first.\n\n" << RESET;
             inv.viewExpiryAlerts();
             pressEnter();
             break;
@@ -708,8 +696,6 @@ int main() {
 
         case 9: {
             sectionHeader("DELIVERY QUEUE", BLUE);
-            cout << DIM << "  Data structure: Queue (FIFO)\n"
-                 << "  The first delivery added will be the first one processed.\n\n" << RESET;
             cout << "  " << BLUE << "[1]" << RESET << " Add delivery to queue\n";
             cout << "  " << BLUE << "[2]" << RESET << " View current queue\n";
             cout << "  " << BLUE << "[3]" << RESET << " Process all deliveries (FIFO)\n\n";
@@ -745,10 +731,11 @@ int main() {
         
         case 0:
             clearScreen();
-            cout << GREEN << BOLD << "\n\n"
+            cout << BLUE << BOLD << "\n\n"
                  << "  +--------------------------------------------+\n"
-                 << "  |   Thank you for using Fresh Track!         |\n"
-                 << "  |   Goodbye!                                 |\n"
+                 << "  |        Ingatan ang inyong paninda.           |\n"
+                 << "  |     Thank you for using Fresh Track!         |\n"
+                 << "  |               Goodbye!                       |\n"
                  << "  +--------------------------------------------+\n\n"
                  << RESET;
             break;
